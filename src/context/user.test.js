@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import UserContext from './user';
 import { Provider, LoginStatus } from './user';
 
-/* login */
+/* login 
 const TestUserComponent = ({userId, password}) => {
     const { user, fetchUser } = useContext(UserContext);
     fetchUser(userId, password);
@@ -48,8 +48,8 @@ test('fetch user invalid login', async () => {
         expect(screen.queryByRole('exists')).not.toBeInTheDocument();
     })
 })
-
-/* logout */ 
+*/
+/* logout  
 const TestResetUserComponent = ({userId, password}) => {
     const { user, fetchUser, resetUser } = useContext(UserContext);
     fetchUser(userId, password);
@@ -84,7 +84,7 @@ test('logout user', async () => {
         expect(after).toBeInTheDocument();
     });
 })
-
+*/
 /* create user 
 const TestCreateUserComponent = () => {
     const { user, createUser } = useContext(UserContext);

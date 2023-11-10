@@ -21,18 +21,19 @@ function Provider({ children }) {
     }, []);
 
     // Repeat the process from the fetchFeaturedPosts function above, only this time we are fetching the categories, which obviously requires a different url.
-    const fetchCategories = async () => {
+    // Wrap the fetchCategories function in useCallback to ensure that the useEffect function (in App.js) knows that fetchCategories shouldn't change when rerendering.
+    const fetchCategories = useCallback(async () => {
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/categories?_sort=name&_order=asc`);
 
         setCategories(response.data);
-    };
+    }, []);
 
     // Repeat the process from the two functions above, but this time we are fetching the posts from a specific user.
-    const fetchPosts = async (id) => {
+    const fetchPosts = useCallback(async (id) => {
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/posts?userId=${id}&_expand=user&_sort=datetime&_order=desc`);
 
         setPosts(response.data);
-    };
+    }, []);
 
     // deletePostById will delete a post, given its id, then update the books state variable appropriately.
     const deletePostById = async (id) => {
@@ -55,7 +56,7 @@ function Provider({ children }) {
             content: newPost.content,
             datetime: newPost.datetime,
             category: newPost.category,
-            user: user.name,
+            ...user,
         });
         const updatedPosts = [
             ...posts, // Copy the posts array, then...

@@ -1,0 +1,37 @@
+.blogImg {
+    height: 400px; /* Give the blog image a fixed height, and have it cover the width of the screen. */
+    width: 100%; 
+}
+
+.headings {
+    text-align: center;
+}
+
+.home {
+    background-color: beige; /* Add a beige background color to the home page and the list of posts (line 23). */
+}
+
+.login {
+    background-color: gray;
+    color: white;
+    height: 40px;
+    width: 120px;
+}
+
+.loginInfo {
+    height: 40px; /* Make the login inputs for the userid and password a little wider than the login button. */
+    width: 170px;
+}
+
+.navbar {
+    height: fit-content; /* Using fit-content works well for the navbar. */
+    font-size: 20px;
+}
+
+.posts {
+    background-color: beige;
+}
+
+.userActions {
+    background-color: lightgray; /* Add a light gray background color to all the buttons the user can press after they've logged in. */
+}

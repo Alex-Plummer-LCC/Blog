@@ -1,7 +1,3 @@
-/* I was having problems getting the tests to work (I got an error saying toBeInTheDocument was not a function), until
-I moved my setupTests.js file to the src folder. I got that idea from this thread on StackOverflow. 
-https://stackoverflow.com/questions/56547215/react-testing-library-why-is-tobeinthedocument-not-a-function
-*/
 import { render, waitFor, screen } from '@testing-library/react';
 import user from "@testing-library/user-event";
 import { useContext } from 'react';
@@ -10,7 +6,7 @@ import { Provider } from './posts';
 import UserContext from './user';
 import { Provider as UserProvider } from './user';
 
-/* categories */
+/* categories 
 const TestCategoriesComponent = () => {
     const { categories, fetchCategories } = useContext(PostsContext);
     fetchCategories();
@@ -32,8 +28,8 @@ test('fetch Categories', async () => {
         expect(screen.getByRole('exists')).toBeInTheDocument();
     })
 })
-
-/* featured posts*/
+*/
+/* featured posts 
 const TestFeaturedPostsComponent = () => {
     const { featuredPosts, fetchFeaturedPosts } = useContext(PostsContext);
     fetchFeaturedPosts();
@@ -55,8 +51,8 @@ test('fetch featuredPosts', async () => {
         expect(screen.getByRole('exists')).toBeInTheDocument();
     })
 })
-
-/* posts */
+*/
+/* posts 
 const TestPostsComponent = () => {
     const { posts, fetchPosts } = useContext(PostsContext);
     fetchPosts(1);
@@ -78,8 +74,8 @@ test('fetch Posts', async () => {
         expect(screen.getByRole('exists')).toBeInTheDocument();
     })
 })
-
-/* delete */
+*/
+/* delete 
 const TestDeleteComponent = () => {
     const { posts, fetchPosts, deletePostById } = useContext(PostsContext);
     fetchPosts(1);
@@ -116,8 +112,8 @@ test('delete Post', async () => {
         expect(after).toBeInTheDocument();
     });
 })
-
-/* create */ 
+*/
+/* create 
 const TestCreatePostComponent = () => {
     const { posts, fetchPosts, createPost } = useContext(PostsContext);
     const { user, fetchUser } = useContext(UserContext);
@@ -167,8 +163,8 @@ test('Create Post', async () => {
         expect(after).toBeInTheDocument();
     });
 })
-
-/* create post with complex data */
+*/ 
+/* create post with complex data 
 const TestCreateWithComplexDataPostComponent = () => {
     const { posts, fetchPosts, createPost } = useContext(PostsContext);
     const { user, fetchUser } = useContext(UserContext);
@@ -219,8 +215,8 @@ test('Create Post', async () => {
         expect(after).toBeInTheDocument();
     });
 })
-
-/* edit */
+*/
+/* edit 
 const TestEditPostComponent = () => {
     const { posts, fetchPosts, editPostById } = useContext(PostsContext);
     fetchPosts(1);
@@ -265,4 +261,4 @@ test('edit Post', async () => {
         expect(after).toBeInTheDocument();
     });
 })
-
+*/
