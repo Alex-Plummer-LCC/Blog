@@ -3,6 +3,14 @@
     width: 100%; 
 }
 
+.category {
+    background-color: lightgray;
+    border: 1px solid blue;
+    margin: 5px;
+    padding: 5px;
+    width: fit-content;
+}
+
 .headings {
     text-align: center;
 }
@@ -28,10 +36,23 @@
     font-size: 20px;
 }
 
+.post {
+    background-color: beige;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    padding: 15px;
+    width: 95%;
+}
+
 .posts {
     background-color: beige;
 }
 
 .userActions {
     background-color: lightgray; /* Add a light gray background color to all the buttons the user can press after they've logged in. */
+    border: 1px solid black;
+    height: 40px; /* This rule only seems to affect the button. I gave it a fixed height so all the links/buttons have something close to the same height. */
+    padding: 5px;
 }
