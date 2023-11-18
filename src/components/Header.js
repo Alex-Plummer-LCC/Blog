@@ -1,5 +1,5 @@
 // This is the site I used for figuring out how to put an image in JSX: https://create-react-app.dev/docs/adding-images-fonts-and-files/.
-import logo from "../images/blogLogo.jpg";
+import logo from "../images/blog.jpg";
 
 // The Header component will simply display the blog image across the page, near the top.
 function Header() {
