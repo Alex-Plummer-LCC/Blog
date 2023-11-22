@@ -19,7 +19,7 @@ user.js). */
 root.render(
     <UserProvider>
         <Provider>
-            <BrowserRouter>
+            <BrowserRouter basename="/~plummera018/CS295RLab6Blog/">
                 <App />
             </BrowserRouter>
         </Provider>
