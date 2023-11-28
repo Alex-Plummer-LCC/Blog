@@ -16,10 +16,11 @@ const root = ReactDOM.createRoot(el);
 /* Render the App component, which is wrapped in three providers, including the new (as of lab 6) BrowserRouter provider. 
 This ensures that the App component and all of its children have access to the two contexts (created in posts.js and 
 user.js). */
+// <BrowserRouter basename="/~plummera018/CS295RLab6Blog/"> --- will change to lab 7 folder when I make it
 root.render(
     <UserProvider>
         <Provider>
-            <BrowserRouter basename="/~plummera018/CS295RLab6Blog/">
+            <BrowserRouter>
                 <App />
             </BrowserRouter>
         </Provider>

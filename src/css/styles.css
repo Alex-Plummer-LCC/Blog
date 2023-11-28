@@ -11,6 +11,21 @@
     width: fit-content;
 }
 
+.editProfile {
+    background-color: blanchedalmond;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin: 40px 300px 0px 300px;
+    padding: 20px;
+    width: 50%;
+}
+
+.errorMessage {
+    color: darkred;
+    font-style: italic;
+}
+
 .headings {
     text-align: center;
 }
@@ -48,6 +63,13 @@
 
 .posts {
     background-color: beige;
+}
+
+.submit {
+    background-color: gray;
+    color: white;
+    margin-top: 20px;
+    width: 20%;
 }
 
 .userActions {
