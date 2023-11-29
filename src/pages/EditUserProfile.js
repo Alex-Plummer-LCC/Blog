@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import UserContext from "../context/user";
 // Import the useForm function from react-hook-form.
 import { useForm } from "react-hook-form";
+import { Navigate } from "react-router-dom";
 
 function EditUserProfile() {
     // Get the user from userContext so the user can see their current information.
@@ -51,9 +52,9 @@ function EditUserProfile() {
 
     const onSubmit = (data) => {
         console.log(data);
-        /* Use the data sent to the onSubmit function to create an object containing the user's new information. Since
-        I did not change the password, it is located in the user object. The image that we want to use is the state variable
-        image. */
+        /* Use the data sent to the onSubmit function (as well as some data from context) to create an object containing the user's 
+        new information. Since I did not change the password, it is located in the user object. The image that we want to use is the 
+        state variable image. */
         const newUserInfo = {
             name: data.name,
             userid: data.userid,
@@ -66,19 +67,27 @@ function EditUserProfile() {
         editUserById(user.id, newUserInfo);
     };
 
+    /*
+
+    --- TODO: Render a Navigate element only when the form has been submitted. ---
+
+    */
+
     // Return JSX for the form, including react-hook-form related functionality.
     // This site helped me out with the onChange handler for the image: https://react-hook-form.com/docs/useform/register
+    /* On line 87, don't require the user to provide an image. They can leave it as is if they want. I got help with this
+    functionality here: https://github.com/react-hook-form/react-hook-form/issues/1781 */
     return (
         <div className="parent">
-            <form className="editProfile" onSubmit={handleSubmit(onSubmit)}>
+            <form className="editingForms" onSubmit={handleSubmit(onSubmit)}>
                 <h5>* next to the field means it is required</h5>
                 <img src={`data:image/png;base64, ${image}`} alt="User's profile pic." width="100px"/>
                 <label>Profile picture*:</label>
                 <input type="file" name="profilePicture"  {...register("profilePicture", {
-                    required: "A profile picture is required.",
+                    required: false,
                     onChange: handleFileChange,
                 })}></input>
-                {errors.profilePicture && <p>{errors.profilePicture.message}</p>}
+                {errors.profilePicture && <p className="errorMessage">{errors.profilePicture.message}</p>}
 
                 <label>Name*:</label>
                 <input type="text" name="name" {...register("name", {
