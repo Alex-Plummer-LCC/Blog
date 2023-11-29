@@ -68,14 +68,8 @@ function Provider({ children }) {
 
     // editPostById will use axios and json-server to edit a post's title, then update the posts state variable appropriately.
     const editPostById = async (id, updatedPost) => {
-        const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/posts/${id}`, { // Use async/await and template literal syntax to make a PUT request to json-server.
-            userId: updatedPost.userId, /* Include an object in the response that is similar to the one in createPost. There is no need to include the 
-                                        user and userId properties, as the same user who created the post is doing the editing. */
-            title: updatedPost.title, 
-            content: updatedPost.content,
-            datetime: updatedPost.datetime,
-            category: updatedPost.category,
-        });
+        // Use async/await and template literal syntax to make a PUT request to json-server.
+        const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/posts/${id}`, updatedPost);
 
         // Update the posts array by creating a new one using the map function.
         const updatedPosts = posts.map((post) => {

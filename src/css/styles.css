@@ -11,7 +11,11 @@
     width: fit-content;
 }
 
-.editProfile {
+.contentEditor {
+    background-color: white;
+}
+
+.editingForms {
     background-color: blanchedalmond;
     border: 1px solid black;
     display: flex;
@@ -21,10 +25,15 @@
     width: 50%;
 }
 
+.editors {
+    margin-top: 20px;
+}
+
 .errorMessage {
     color: darkred;
     font-style: italic;
 }
+
 
 .headings {
     text-align: center;
