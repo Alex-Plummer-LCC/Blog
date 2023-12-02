@@ -6,6 +6,9 @@ import LoginForm from "./LoginForm";
 import { Link } from "react-router-dom";
 
 function NavBar() {
+    // Get the pathname from the user's location. The content of the Nav Bar depends on the location.
+    let path = window.location.pathname;
+
     // Create a state variable showLogin. Initialize it to false - we don't want to show the login form right away.
     const [ showLogin, setShowLogin ] = useState(false);
     // Since the NavBar component displays content related to logging in, it needs access to the user and resetUser from UserContext.
@@ -31,12 +34,12 @@ function NavBar() {
         setShowLogin(false);
     }
 
-    // From lines 42 to 54, return the JSX for the navbar. Anchor elements are now React Router <Link> elements.
+    // From lines 45 to 58, return the JSX for the navbar. Anchor elements are now React Router <Link> elements.
     /* I used the justify-content-between class to separate the title of the application and the login/user information. 
     I went to this site for help with that: https://getbootstrap.com/docs/4.0/utilities/flex/#align-self */
 
     // I used "pic" instead of "picture" to avoid the eslint warning.
-    /* (Line 51) - I added the condition !showLogin when determining whether to show the login button or not. Without this condition, 
+    /* (Line 55) - I added the condition !showLogin when determining whether to show the login button or not. Without this condition, 
     two login buttons (one here, one in LoginForm.js) would show while logging in. */
     return (
         <div className="navbar d-flex align-items-center justify-content-between">
@@ -45,7 +48,8 @@ function NavBar() {
             </div>
             <div>
                 {user && <img src={`data:image/png;base64, ${user.image}`} alt="User's profile pic." height="100px"/>}
-                {user && <Link className="userActions" to="/posts/new">New Post</Link>}
+                {/* Only render the New Post link if the user is logged in and at the home page. */}
+                {user && path === "/~plummera018/CS295RLab7Blog/" && <Link className="userActions" to="/posts/new">New Post</Link>}
                 {user && <Link className="userActions" to="/user">Edit User Profile</Link>}
                 {user && <button className="userActions" onClick={handleClick}>Logout</button>}
                 {!user && !showLogin && <button className="login" onClick={handleClick}>Login</button>}

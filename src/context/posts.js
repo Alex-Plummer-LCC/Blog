@@ -48,19 +48,14 @@ function Provider({ children }) {
     };
 
     // This function will add a new post to the posts array.
-    const createPost = async (newPost, user) => {
+    const createPost = async (newPostInfo, user) => {
         // Make a POST request to json-sever (and wait for it) that adds a new post with all the information the user wants.
-        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/posts`, {
-            userId: newPost.userId,
-            title: newPost.title,
-            content: newPost.content,
-            datetime: newPost.datetime,
-            category: newPost.category,
-            ...user,
-        });
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/posts`, newPostInfo);
+        // Create a variable newPost that is response.data (the information about the post) concatenated with information about the user.
+        const newPost = {...response.data, user: user};
         const updatedPosts = [
             ...posts, // Copy the posts array, then...
-            response.data // ...Take the data from the response (the new post) and add it to the copy of the posts array.
+            newPost // ...Take the variable newPost and add it to the copy of the posts array.
         ];
 
         setPosts(updatedPosts);

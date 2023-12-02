@@ -38,7 +38,7 @@ function App() {
                 <Route path="user" element={(user) ? <EditUserProfile /> : <Navigate to="/" /> } />
                 <Route path="posts/:id" element={<Post />} />
                 <Route path="posts/new" element={(user) ? <EditPost /> : <Navigate to="/" /> } />
-                <Route path="posts/edit/:id" element={(user) && location && location.state && user.id === location.state.userId ? <EditPost /> : <Navigate to="/" />} />
+                <Route path="posts/edit/:id" element={(user) && location && location.state && user.id === location.state.userId ? <EditPost type="edit" /> : <Navigate to="/" />} />
                 <Route path="*" element={<NoPage />}/>
             </Route>
         </Routes>

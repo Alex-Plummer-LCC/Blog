@@ -13,8 +13,10 @@
 
 .contentEditor {
     background-color: white;
+    overflow-y: scroll;
 }
 
+/* The following three styles give styling to the forms, some individual elements within the forms, and the error messages. */
 .editingForms {
     background-color: blanchedalmond;
     border: 1px solid black;
@@ -68,6 +70,10 @@
     margin: 25px;
     padding: 15px;
     width: 95%;
+}
+
+.postHeading {
+    text-align: center;
 }
 
 .posts {

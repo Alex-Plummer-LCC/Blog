@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
 import UserContext from "../context/user";
-// Import the useForm function from react-hook-form.
+// Import the useForm function from react-hook-form as well as useNavigate from react-router-dom.
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
+// The EditUserProfile page will allow the user to edit their profile information and image.
 function EditUserProfile() {
     // Get the user from userContext so the user can see their current information.
     const { user, editUserById } = useContext(UserContext);
-    // Keep track of the image using a state variable image.
+    // Keep track of the image using a state variable image. Initialize it to the current image.
     const [image, setImage] = useState(user.image);
 
     // The following three functions came from the lab instructions in the starting files. They help with image processing.
@@ -37,6 +38,7 @@ function EditUserProfile() {
         setImage(updatedImage);
     }
 
+    // Pull the necessary functions out of useForm and give it default values.
     const {
         register,
         handleSubmit,
@@ -50,10 +52,11 @@ function EditUserProfile() {
         }
     });
 
+    // Get the useNavigate function so the user can be returned to the home page upon form submission.
     const navigate = useNavigate();
     const onSubmit = (data) => {
-        console.log(data);
-        /* Use the data sent to the onSubmit function (as well as some data from context) to create an object containing the user's 
+        // console.log(data);
+        /* Use the data sent to the onSubmit function (as well as some data from context/state) to create an object containing the user's 
         new information. Since I did not change the password, it is located in the user object. The image that we want to use is the 
         state variable image. */
         const newUserInfo = {
@@ -63,15 +66,15 @@ function EditUserProfile() {
             bio: data.bio,
             password: user.password,
             image: image,
-        }
+        };
 
-        editUserById(user.id, newUserInfo);
+        editUserById(user.id, newUserInfo); // Edit the user in the db.json file.
         navigate("/"); // Use the navigate function to send the user back to the home page once they're done editing their profile.
     };
 
-    // Return JSX for the form, including react-hook-form related functionality.
+    // Return JSX for the form, including react-hook-form related functionality. I used the email validation pattern from the tutorial.
     // This site helped me out with the onChange handler for the image: https://react-hook-form.com/docs/useform/register
-    /* On line 83, don't require the user to provide an image. They can leave it as is if they want. I got help with this
+    /* On line 86, don't require the user to provide an image. They can leave it as is if they want. I got help with this
     functionality here: https://github.com/react-hook-form/react-hook-form/issues/1781 */
     return (
         <div className="parent">
@@ -79,7 +82,7 @@ function EditUserProfile() {
                 <h5>* next to the field means it is required</h5>
                 <img src={`data:image/png;base64, ${image}`} alt="User's profile pic." width="100px"/>
                 <label>Profile picture*:</label>
-                <input type="file" name="profilePicture"  {...register("profilePicture", {
+                <input type="file" name="profilePicture" {...register("profilePicture", {
                     required: false,
                     onChange: handleFileChange,
                 })}></input>
